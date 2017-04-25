@@ -1,0 +1,88 @@
+package a02.tabelle;
+
+import java.io.PrintWriter;
+
+public class TablePrint {
+
+	public static void main(String[] args) {
+		// TODO printTable
+		// TODO printHeader
+		// TODO printBody
+		// TODO printLine
+		
+		PrintWriter out = new PrintWriter(System.out, true);
+		
+		printTable(0.10, 0.90, 15);
+
+		out.println("This is the end...");
+		
+	}
+
+	
+	public static double f (double x) {
+		
+		double y = (x -  17) * (x + 12) / (x * x + 0.1);
+		
+		return y;
+	}
+	
+	
+	public static double g (double x) {
+		
+		double y;
+		
+		y = x * Math.sin(x);
+		
+		return y;
+	}
+	
+	
+	public static void printTable(double xMin, double xMax, int width){
+		
+		double x = xMin;
+		
+		printHeader(width);
+		
+		for (double i = xMin; i <= xMax; i += 0.1) {
+			printLine(x, width);
+		}
+		printBody(xMin, xMax, width);
+		
+		
+		
+	}
+	
+	protected static void printHeader(int width){
+		
+		PrintWriter out = new PrintWriter(System.out, true);
+		
+		String[] names = new String[2];
+		names[0] = "x";
+		names[1] = "f(x)";
+		names[2] =  "g(x)";
+		
+		for (int i = 0; i < width; i++) {
+		out.print("");
+		}
+		
+	}
+	
+	protected static void printBody(double xMin, double xMax, int width){
+		
+	}
+	
+	protected static void printLine(double x, int width){
+		
+	}
+	
+	// prints a line of - - - of selected width
+	protected static void printDivider(int width){
+		PrintWriter lineOut = new PrintWriter(System.out, true);
+		for (int x = 0; x < width; x++) {
+			lineOut.print("- ");
+		}
+		
+		lineOut.println();
+	}
+	
+}

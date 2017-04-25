@@ -1,0 +1,48 @@
+package a02.tabelle;
+import java.io.PrintWriter;
+public class TablePrint {
+
+	public static void main(String[] args) {
+		// TODO printTable
+		// TODO printHeader
+		// TODO printBody
+		// TODO printLine
+		
+		printTable();
+
+	}
+
+	
+	public static double f (double x) {
+		
+		double y;
+		
+		return y;
+	}
+	
+	
+	public static double f (double x) {
+		
+		double y;
+		
+		return y;
+	}
+	
+	
+	public static void printTable(double xMin, double xMax, int width){
+		
+	}
+	
+	protected static void printHeader(int width){
+		
+	}
+	
+	protected static void printBody(double xMin, double xMax, int width){
+		
+	}
+	
+	protected static void printLine(double x, int width){
+		
+	}
+	
+}
