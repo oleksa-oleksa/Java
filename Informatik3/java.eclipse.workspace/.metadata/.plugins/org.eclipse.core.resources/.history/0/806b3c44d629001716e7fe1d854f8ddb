@@ -35,7 +35,6 @@ public class DirContent {
 	// Learning Method Overloading in Java
 	// First Method that we expect to work with
 	public static void printAll(File patch) {
-		PrintWriter out = new PrintWriter(System.out, true);
 		
 	}
 	

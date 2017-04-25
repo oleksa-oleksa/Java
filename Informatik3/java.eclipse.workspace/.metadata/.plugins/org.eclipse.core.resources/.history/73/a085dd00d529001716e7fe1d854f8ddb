@@ -19,10 +19,15 @@ public class DirContent {
 		File test2 = new File("C:\\ENGINEERING\\ModelSim\\modelsim_ase");
 		File test3 = new File("C:\\ENGINEERING\\Quartus\\uninstall");
 		
-		// test Array with the paths 
+		//test strings to resolve as a paths
+		String str1 = "";
+		String str2 = "";
+		String str3 = "";
+		
 		File[] myPatches = {test1, test2, test3};
-				
+		
 		test(myPatches);
+		
 	}
 	 
 	// Test Unit Call
@@ -32,10 +37,8 @@ public class DirContent {
 		}
 	}
 	
-	// Learning Method Overloading in Java
-	// First Method that we expect to work with
+	// Method Overloading in Java
 	public static void printAll(File patch) {
-		PrintWriter out = new PrintWriter(System.out, true);
 		
 	}
 	

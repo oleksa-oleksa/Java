@@ -1,0 +1,14 @@
+package in3.a03;
+
+import java.io.PrintWriter;
+import java.io.File;
+
+
+public class DirContent {
+	
+	public static void main(String[] args) {
+		// test
+		File test1 = new File("C:\\ENGINEERING\\LERNPAKET");
+	}
+	 
+}
