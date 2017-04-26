@@ -11,7 +11,6 @@ import java.util.Arrays;
 
 public class DirContent {
 	
-	// Main Program
 	public static void main(String[] args) {
 		// test paths 
 		File test1 = new File("C:\\ENGINEERING\\LERNPAKET");
@@ -30,8 +29,6 @@ public class DirContent {
 			printAll(paths[i]);
 		}
 	}
-	
-	/*===========================================*/
 	
 	// Learning Method Overloading in Java
 	// First Method that we expect to work with files
