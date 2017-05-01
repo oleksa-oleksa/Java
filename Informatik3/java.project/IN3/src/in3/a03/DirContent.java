@@ -67,7 +67,7 @@ public class DirContent {
 		File listOfSortedData[] = getSortedFileList(path);
 
 		// goes through array in alphabetic order
-		// and checks whether the current item is a file 
+		// and checks whether the current item is a directory 
 		// by success prints the file information
 		for (int i = 0; i < listOfSortedData.length; i++) {
 			if(listOfSortedData[i].isDirectory()){
