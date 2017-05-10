@@ -40,8 +40,9 @@ public class FirstInput {
 	public static int countSumOf(String fileName) {
 		DirtyFileReader dfr = new DirtyFileReader(fileName);
 		Scanner s = new Scanner(dfr);
-		
-		return countSumOf(s);
+		int sum = countSumOf(s);
+		s.close();
+		return sum;
 		
 	}
 	
