@@ -25,21 +25,20 @@ public class FirstDrawing {
 	public static void paintSomePoints(int basicNumber) {
 		
 		DirtyPainter paintOut = new DirtyPainter();
-		int mult = 1; 
+		
 		
 		//checks whether the parameters are correct coordinates
 		if (basicNumber < 0 || basicNumber > 500){
 			return;
 		}
 		
-		for (int x = basicNumber, y = basicNumber; x <= 500 && y <= 500;){
-			Point myPoint = new Point(x, y);
-			paintOut.add(myPoint);
-			paintOut.showDrawing();
-			
-			mult++; 
-			x = basicNumber * mult;
-			y = x; 
+
+		for (int x = basicNumber; x <= 500; x += basicNumber ){
+			for (int y = basicNumber; y <= 500; y += basicNumber ){
+				Point myPoint = new Point(x, y);
+				paintOut.add(myPoint);
+				paintOut.showDrawing();
+			}
 		}
 	}
 	

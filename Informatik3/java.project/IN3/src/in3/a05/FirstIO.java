@@ -91,6 +91,7 @@ public class FirstIO {
 			
 		writeIntNumbers(numberCount, width, fout);
 		fout.close();
+		dfw.close();
 	}
 	
 	public static void writeRandomMixedNumbersTo(int numberCount, int width, String filename){
@@ -100,6 +101,7 @@ public class FirstIO {
 		
 		writeMixedNumbers(numberCount, width, fout);
 		fout.close();
+		dfw.close();
 	}
 	
 	
