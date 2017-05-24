@@ -1,49 +1,46 @@
 package in3.a07;
 
-import java.io.PrintWriter;
-import java.util.HashSet;
-import java.util.Locale;
 import java.util.Scanner;
-import java.util.Set;
 
-import lernhilfe2013ws.io.DirtyFileReader;
-import lernhilfe2013ws.io.DirtyFileWriter;
-import lernhilfe2013ws.objectPlay.Factory;
-
-// TODO Write the class Person instead of the used before class
 
 public class Person {
 
-	public static void main(String[] args) {
-		Locale.setDefault(Locale.US);
-		Person[] myTestPersons = Factory.createTestPersons();
-		Set<Person> personSet = new HashSet<Person>();
-		String personsB = "./testfiles/persons_b.txt";
-		
-		for (int i = 0; i < myTestPersons.length; i++){
-			personSet.add(myTestPersons[i]);
-		}
-		PrintWriter out = new PrintWriter(System.out, true);
-		printPersons(personSet, out);
-		printPersons(personSet, personsB);
-		demoMengenOperationen();
+	protected String name;
+	protected String familyName;
+	protected int yearOfBirth;
+	
+	
+	public Person(String name, String familyName, int yearOfBirth){
+		this.name = name;
+		this.familyName = familyName;
+		this.yearOfBirth = yearOfBirth;
 	}
 	
-	public static void printPersons(Set<Person> persons, PrintWriter out){
-		// converting set back to array
-		Person[] printPersons = new Person[persons.size()];
-		persons.toArray(printPersons);
-		for (int i = 0; i < printPersons.length; i++){
-			Person p = printPersons[i];
-			out.format("%s %s %d%n", p.getVorname(), p.getNachname(), p.getGeburtsjahr());
-		}
+	public Person(Person p){
+		this(p.name, p.familyName, p.yearOfBirth);
 	}
 	
-	public static void printPersons(Set<Person> persons, String filename){
-		PrintWriter fout = new PrintWriter(new DirtyFileWriter(filename));
-		printPersons(persons, fout);
-		fout.flush();
-		fout.close();
+	public Person(lernhilfe2013ws.objectPlay.Person p){
+		this.name = p.getVorname();
+		this.familyName = p.getNachname();
+		this.yearOfBirth = p.getGeburtsjahr();
+	}
+	
+	public String getName(){
+		return name;
+	}
+	
+	public String getFamilyName(){
+		return familyName;
+	}
+	
+	public int getYearOfBirth(){
+		return yearOfBirth;
+	}
+	
+	public String toString(){
+		String s = name + " " + familyName + " " + Integer.toString(yearOfBirth);
+		return s;
 	}
 	
 	public static Person createPerson(Scanner in){
@@ -54,40 +51,37 @@ public class Person {
 		return newHuman;
 	}
 	
-	public static Set<Person> getPersonsFrom(Scanner in){
-		Set<Person> people = new HashSet<Person>();
-		while (in.hasNext()){
-			Person p = createPerson(in);
-			people.add(p);
-		}
-		return people;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((familyName == null) ? 0 : familyName.hashCode());
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + yearOfBirth;
+		return result;
 	}
-	
-	public static Set<Person> getPersonsFrom(String filename){
-		DirtyFileReader dfr = new DirtyFileReader(filename);
-		Scanner in = new Scanner(dfr);
-		return getPersonsFrom(in);
-	}
-	
-	public static void demoMengenOperationen(){
-		Set<Person> sportFriends = getPersonsFrom("./persondata/sportfreunde.txt");
-		Set<Person> uniFriends = getPersonsFrom("./persondata/kommilitonen.txt");
-		
-		// Intersection
-		Set<Person> interSet = new HashSet<Person>(sportFriends);
-		interSet.retainAll(uniFriends);
-		printPersons(interSet, "./persondata/SundK.txt");
-		
-		// Difference
-		Set<Person> diffSet = new HashSet<Person>(uniFriends);
-		diffSet.remove(sportFriends);
-		printPersons(diffSet, "./persondata/KaberNichtS.txt");
-		
-		// Union
-		Set<Person> unionSet = getPersonsFrom("./testfiles/persons_b.txt");
-		unionSet.addAll(uniFriends);
-		printPersons(unionSet, "./persondata/TvereinigtK.txt");
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Person other = (Person) obj;
+		if (familyName == null) {
+			if (other.familyName != null)
+				return false;
+		} else if (!familyName.equals(other.familyName))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (yearOfBirth != other.yearOfBirth)
+			return false;
+		return true;
 	}
 }
-
-
