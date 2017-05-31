@@ -1,0 +1,43 @@
+package in3.a06;
+
+import java.io.File;
+import java.io.PrintWriter;
+import java.util.Locale;
+
+import lernhilfe2013ws.io.DirtyFileWriter;
+import lernhilfe2013ws.objectPlay.Factory;
+import lernhilfe2013ws.objectPlay.Person;
+import lernhilfe2013ws.objectPlay.PersonSet;
+
+public class Personen {
+
+	public static void main(String[] args) {
+		Locale.setDefault(Locale.US);
+		Person[] myTestPersons = Factory.createTestPersons();
+		PersonSet personSet = new PersonSet();
+		String personsB = "./testfiles/persons_b.txt";
+		
+		for (int i = 0; i < myTestPersons.length; i++){
+			personSet.add(myTestPersons[i]);
+		}
+		PrintWriter out = new PrintWriter(System.out, true);
+		printPersons(personSet, out);
+		printPersons(personSet, personsB);
+	}
+	
+	public static void printPersons(PersonSet persons, PrintWriter out){
+		// converting set back to array
+		Person[] printPersons = persons.toArray();
+		for (int i = 0; i < printPersons.length; i++){
+			out.println(printPersons[i]);
+		}
+	}
+	
+	public static void printPersons(PersonSet persons, String filename){
+		PrintWriter fout = new PrintWriter(new DirtyFileWriter(filename));
+		printPersons(persons, fout);
+	}
+	
+}
+
+

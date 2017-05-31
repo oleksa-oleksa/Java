@@ -1,0 +1,33 @@
+package in3.a05;
+
+import java.io.PrintWriter;
+import java.util.Locale;
+
+import lernhilfe2013ws.io.ConsolePrinter;
+
+public class FirstIO {
+
+	public static void main(String[] args) {
+
+		Locale.setDefault(Locale.US);
+		
+		ConsolePrinter con = ConsolePrinter.createInstance();
+		PrintWriter out = new PrintWriter(con, true);
+		
+		
+		writeRandomMixedNumbers(10, 5, out);
+	}
+	
+	public static void writeRandomMixedNumbers(int numberCount, int width, PrintWriter out){
+		
+		if (numberCount % 2 != 0){
+			numberCount--;
+		}
+		
+		for(int i = 1; i <= numberCount; i++){
+			int x = (int) Math.floor(Math.random() * 101);
+			out.printf("%%d", width, x);
+		}
+	}
+
+}

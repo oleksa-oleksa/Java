@@ -1,0 +1,83 @@
+package in3.a05;
+
+import java.awt.Color;
+import java.util.Scanner;
+
+import lernhilfe2013ws.graphics.DirtyPainter;
+import lernhilfe2013ws.graphics.Point;
+import lernhilfe2013ws.io.DirtyFileReader;
+
+public class FirstInput {
+
+	public static void main(String[] args) {
+		paintPointsFrom("./testfiles/mixedNo.txt");		
+	}
+
+
+	public static int countSumOf(Scanner in) {
+		int sum = 0;
+		while (in.hasNextInt())	{
+			sum += in.nextInt();
+		}
+		
+		return sum;
+	}
+	
+	public static int countSumOf(String fileName) {
+		DirtyFileReader dfr = new DirtyFileReader(fileName);
+		Scanner s = new Scanner(dfr);
+		
+		return countSumOf(s);
+		
+	}
+	
+	public static void paintPointsFrom(Scanner in) {
+		DirtyPainter dp = new DirtyPainter();
+	
+		int x, y;
+		boolean hasDouble;
+		while (true) {
+			hasDouble = false;
+			System.out.println("WTFFFFFFFFFFFFFFFFFFFFFFF");
+			
+			if (in.hasNextInt()) {
+				x = in.nextInt();
+			} else if (in.hasNextDouble()) {
+				x = (int)Math.floor(in.nextDouble());
+				hasDouble = true;
+			} else {
+				break;
+			}
+			
+			System.out.println("read x ok");
+			
+			if (in.hasNextInt()) {
+				y = in.nextInt();
+			} else if (in.hasNextFloat()) {
+				y = (int) Math.floor(in.nextFloat());
+				hasDouble = true;
+			} else {
+				System.out.println("NOT OK");
+				break;
+			}
+			
+			System.out.println(String.valueOf(x) + " - " + String.valueOf(y));
+			Point myPoint = new Point(x, y);
+			if (hasDouble) {
+				myPoint.setColor(Color.green);				
+			} else {
+				myPoint.setColor(Color.blue);
+			}
+			dp.add(myPoint);
+						
+		}
+		dp.showDrawing();			
+
+	}
+	
+	public static void paintPointsFrom(String fileName) {
+		DirtyFileReader dfr = new DirtyFileReader(fileName);
+		Scanner in = new Scanner(dfr);
+		paintPointsFrom(in);
+	}
+}

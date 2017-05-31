@@ -1,0 +1,37 @@
+package in3.a07;
+
+public class Person {
+
+	protected String name;
+	protected String familyName;
+	protected int yearOfBirth;
+	
+	
+	public Person(String name, String familyName, int yearOfBirth){
+		this.name = name;
+		this.familyName = familyName;
+		this.yearOfBirth = yearOfBirth;
+	}
+	
+	public Person(Person p){
+		this(p.name, p.familyName, p.yearOfBirth);
+	}
+	
+	public Person(lernhilfe2013ws.objectPlay.Person p){
+		this.name = p.getVorname();
+		this.familyName = p.getNachname();
+		this.yearOfBirth = p.getGeburtsjahr();
+	}
+	
+	public String getName(){
+		return name;
+	}
+	
+	public String getFamilyName(){
+		return familyName;
+	}
+	
+	public int getYearOfBirth(){
+		return yearOfBirth;
+	}
+}

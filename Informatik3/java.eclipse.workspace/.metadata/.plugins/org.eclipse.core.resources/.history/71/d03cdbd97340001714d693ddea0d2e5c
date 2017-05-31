@@ -1,0 +1,22 @@
+package in3.a08;
+
+public class Student extends Person implements Human
+{
+		
+		//two new fields for the subclass 
+		public int enrolmentNo;
+		public String degreeCourse;
+		
+		//inheritance 
+		public Student (int enrolmentNo, String degreeCourse, String name, String familyName, int yearOfBirth){
+			super(name, familyName, yearOfBirth);
+			this.enrolmentNo = enrolmentNo;
+			this.degreeCourse = degreeCourse;
+		}
+		
+		public String toString (){
+			return super.toString() + " " + degreeCourse + " " + Integer.toString(enrolmentNo);
+		}
+		
+		
+}

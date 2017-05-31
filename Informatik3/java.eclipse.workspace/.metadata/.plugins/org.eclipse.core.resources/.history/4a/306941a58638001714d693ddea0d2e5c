@@ -1,0 +1,27 @@
+package in3.a06;
+
+import java.io.PrintWriter;
+
+import lernhilfe2013ws.objectPlay.Factory;
+import lernhilfe2013ws.objectPlay.Person;
+import lernhilfe2013ws.objectPlay.PersonSet;
+
+public class Personen {
+
+	public static void main(String[] args) {
+		Person[] myTestPersons = Factory.createTestPersons();
+		PersonSet personSet = new PersonSet();
+		
+		for (int i = 0; i < myTestPersons.length; i++){
+			personSet.add(myTestPersons[i]);
+		}
+	}
+
+
+	public static void printPersons(PersonSet personSet, PrintWriter out){
+		
+	}
+	
+}
+
+
