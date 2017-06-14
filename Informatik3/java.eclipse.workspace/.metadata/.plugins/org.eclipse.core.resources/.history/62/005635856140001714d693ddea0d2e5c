@@ -1,5 +1,0 @@
-package in3.a08;
-
-public class Student extends Person {
-
-}

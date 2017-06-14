@@ -1,0 +1,13 @@
+package in3.a10;
+
+import java.awt.event.ActionListener;
+
+public class ActionPrinter implements ActionListener {
+	private PrintWriter printer_writer;
+	
+	ActionPrinter(PrinterWriter pw) {
+		printer_writer = pw;
+	}
+	
+	
+}

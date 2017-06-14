@@ -1,0 +1,11 @@
+package in3.a10;
+
+public class ActionPrinter implements ActionListener {
+	private PrinterWriter printer_writer;
+	
+	ActionPrinter(PrinterWriter pw) {
+		printer_writer = pw;
+	}
+	
+	
+}

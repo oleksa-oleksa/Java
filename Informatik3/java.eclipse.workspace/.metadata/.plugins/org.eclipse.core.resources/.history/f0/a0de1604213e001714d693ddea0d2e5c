@@ -1,8 +1,0 @@
-package in3.a07;
-
-public class Person {
-
-	String vorname;
-	String nachname;
-	int geburtsjahr;
-}
