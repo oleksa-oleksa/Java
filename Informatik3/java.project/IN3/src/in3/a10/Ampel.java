@@ -3,6 +3,7 @@ package in3.a10;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import in3.a11.Ampelphase;
 import lernhilfe2013ws.graphics.Drawable;
 import lernhilfe2013ws.graphics.Oval;
 import lernhilfe2013ws.graphics.Point;

@@ -1,0 +1,72 @@
+package in3.a11;
+
+import java.awt.Color;
+import java.awt.Graphics;
+
+import in3.a10.Ampelphase;
+import lernhilfe2013ws.graphics.Drawable;
+import lernhilfe2013ws.graphics.Oval;
+import lernhilfe2013ws.graphics.Point;
+
+public class AmpelView implements Drawable, PropertyChangeListener {
+	private int x, y;
+	private AmpelModel model;
+	
+	public static final int CIRCLE_RADIUS = 50;
+
+	public AmpelView(AmpelModel m, int x, int y){
+		this.model = m;
+		this.x = x;
+		this.y = y;
+	}
+	
+	public AmpelView(AmpelView other){
+		this.model = other.model;
+		this.x = other.x;
+		this.y = other.y;
+	}
+	
+	public String toString(){
+		String s = "State is " + model.getPhase() + ", position is (" + x + ", " + y + ").";
+		return s;
+	}
+	
+	@Override
+	public void draw(Graphics g){
+		int spot_y = y;
+		String phase = model.getPhase();
+		
+		Point p = new Point(x, spot_y);
+		Oval red = new Oval(p, CIRCLE_RADIUS, CIRCLE_RADIUS);
+		if (phase == Ampelphase.RED || phase == Ampelphase.RED_YELLOW) {
+			red.setColor(Color.RED);
+		} else {
+			red.setColor(Color.BLACK);
+		}
+		red.draw(g);
+		
+		spot_y += CIRCLE_RADIUS;
+		p = new Point(x, spot_y);
+		Oval yellow = new Oval(p, CIRCLE_RADIUS, CIRCLE_RADIUS);
+		
+		if (phase == Ampelphase.YELLOW || phase == Ampelphase.RED_YELLOW) {
+			yellow.setColor(Color.YELLOW);
+		} else {
+			yellow.setColor(Color.BLACK);
+		}
+		yellow.draw(g);
+		
+		
+		spot_y += CIRCLE_RADIUS;
+		p = new Point(x, spot_y);
+		Oval green = new Oval(p, CIRCLE_RADIUS, CIRCLE_RADIUS); 
+		if (phase == Ampelphase.GREEN) {
+			green.setColor(Color.GREEN);
+		} else {
+			green.setColor(Color.BLACK);
+		}
+		green.draw(g);
+	}
+	
+
+}

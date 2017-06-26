@@ -6,7 +6,6 @@ import lernhilfe2013ws.graphics.DirtyPainter;
 public class AmpelTest {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		DirtyPainter dp = new DirtyPainter();
 		
 		Ampel ampel1 = new Ampel(150, 100);
