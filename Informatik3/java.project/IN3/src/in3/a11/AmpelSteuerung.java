@@ -3,19 +3,24 @@ package in3.a11;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import in3.a10.Ampel;
+import lernhilfe2013ws.graphics.DirtyPainter;
 
 public class AmpelSteuerung implements ActionListener {
 
 	public static final int NUMBER_OF_LIGHTS = 4;
 
-	private AmpelModel[] lights;
+	private AmpelModel[] model;
+	private AmpelView[] view;
 	private boolean is_stopped;
+	private DirtyPainter dp;
 
-	public AmpelSteuerung() {
-		lights = new AmpelModel[NUMBER_OF_LIGHTS];
+	public AmpelSteuerung(AmpelModel model[], AmpelView view[]) {
+		this.model = new AmpelModel[NUMBER_OF_LIGHTS];
+		this.view = new AmpelView[NUMBER_OF_LIGHTS];
+		this.is_stopped = false;
 		for (int i = 0; i < NUMBER_OF_LIGHTS; i++) {
-			lights[i] = new AmpelView(150+i*AmpelView.CIRCLE_RADIUS, 100);
+			model[i] = new AmpelModel();
+			view[i] = new AmpelView(dp, model[i], 150, y);
 		}
 	}
 	
@@ -24,21 +29,21 @@ public class AmpelSteuerung implements ActionListener {
 		String cmd = ae.getActionCommand();
 		
 		if (cmd == Command.RESET_ALL) {
-			for (AmpelModel a : lights) {
+			for (AmpelModel a : model) {
 				a.resetCycle();
 			}
 			is_stopped = false;
+			
 		} else if (cmd.equals(Command.STOP_ALL)) {
-			is_stopped = true;
-			for (AmpelModel a : lights) {
+			for (AmpelModel a : model) {
 				a.forceRedLight();
 			}
+			is_stopped = true;
+
 		} else if (cmd == Command.NEXT_PHASE && !is_stopped) {
-			for (AmpelModel a : lights) {
+			for (AmpelModel a : model) {
 				a.toNextPhase();
 			}
 		}
 	}	
-	
-	
 }

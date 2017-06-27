@@ -1,36 +1,29 @@
 package in3.a11;
 
-import java.beans.PropertyChangeSupport;
 import java.io.PrintWriter;
-
 import lernhilfe2013ss.event.Timer;
-import lernhilfe2013ws.graphics.DirtyPainter;
 
 public class EventsTest {
 
 	public static void main(String[] args) throws InterruptedException {
 
-		DirtyPainter dp = new DirtyPainter();
-		
-		
-		
 		PrintWriter pw = new PrintWriter(System.out, true);
 		
 		ActionPrinter ap = new ActionPrinter(pw);
-		AmpelSteuerung as = new AmpelSteuerung();
+		AmpelSteuerung AmpelControl = new AmpelSteuerung();
 		
 		Timer switcher = new Timer(1000);
-		switcher.addActionListener(as);
+		switcher.addActionListener(AmpelControl);
 		switcher.addActionListener(ap);
 		switcher.setActionCommand(Command.NEXT_PHASE);
 		
 		Timer blocker = new Timer(1200);
-		blocker.addActionListener(as);
+		blocker.addActionListener(AmpelControl);
 		blocker.addActionListener(ap);
 		blocker.setActionCommand(Command.STOP_ALL);
 		
 		Timer resetter = new Timer(1400);
-		resetter.addActionListener(as);
+		resetter.addActionListener(AmpelControl);
 		resetter.addActionListener(ap);
 		resetter.setActionCommand(Command.RESET_ALL);
 		
