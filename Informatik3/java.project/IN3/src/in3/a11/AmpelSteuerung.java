@@ -6,22 +6,15 @@ import java.awt.event.ActionListener;
 import lernhilfe2013ws.graphics.DirtyPainter;
 
 public class AmpelSteuerung implements ActionListener {
-
-	public static final int NUMBER_OF_LIGHTS = 4;
-
+	
 	private AmpelModel[] model;
-	private AmpelView[] view;
 	private boolean is_stopped;
 	private DirtyPainter dp;
 
-	public AmpelSteuerung(AmpelModel model[], AmpelView view[]) {
-		this.model = new AmpelModel[NUMBER_OF_LIGHTS];
-		this.view = new AmpelView[NUMBER_OF_LIGHTS];
+	public AmpelSteuerung(AmpelModel model[]) {
+		this.model = model;
 		this.is_stopped = false;
-		for (int i = 0; i < NUMBER_OF_LIGHTS; i++) {
-			model[i] = new AmpelModel();
-			view[i] = new AmpelView(dp, model[i], 150, y);
-		}
+		
 	}
 	
 	@Override

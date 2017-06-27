@@ -14,27 +14,34 @@ import lernhilfe2013ws.graphics.Point;
 public class AmpelView implements Drawable, PropertyChangeListener {
 	public static final int CIRCLE_RADIUS = 50;
 
-	private int x;
-	private int y;
-	private AmpelModel model;
+	protected int x;
+	protected int y;
+	protected String phase;
 	private DirtyPainter dp;
+
 	
-	public AmpelView(DirtyPainter dp, AmpelModel m, int x, int y){
-		this.model = m;
+	public AmpelView(AmpelModel m, DirtyPainter dp){
+		this.x = m.getX();
+		this.y = m.getY();
+		this.phase = m.getPhase();
 		this.dp = dp;
-		this.x = x;
-		this.y = y;
+		
 	}
 	
-	public AmpelView(DirtyPainter dp, AmpelView other){
-		this.model = other.model;
-		this.dp = dp;
+	public AmpelView(AmpelView other, DirtyPainter dp){
 		this.x = other.x;
 		this.y = other.y;
+		this.phase = other.phase;
+		this.dp = dp;
+	}
+	
+	public void addPainter(DirtyPainter painter){
+		this.dp = painter;
+		painter.add(this);
 	}
 	
 	public String toString(){
-		String s = "State is " + model.getPhase() + ", position is (" + x + ", " + y + ").";
+		String s = "State is " + phase + ", position is (" + x + ", " + y + ").";
 		return s;
 	}
 	
@@ -78,6 +85,7 @@ public class AmpelView implements Drawable, PropertyChangeListener {
 	@Override
 	public void propertyChange(PropertyChangeEvent e) {
 		if (e.getPropertyName() == AmpelModel.PROPERTY_CHANGE_EVENT_NAME) {
+			phase = (String) e.getNewValue();
 			dp.repaint();
 		}
 	}

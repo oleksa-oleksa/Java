@@ -6,12 +6,16 @@ import java.beans.PropertyChangeSupport;
 public class AmpelModel{
 	public static final String PROPERTY_CHANGE_EVENT_NAME = "AMPEL_MODEL_UPDATED";
 
+	private int x;
+	private int y;
 	private String phase;
 	private String initial_phase;
 	private PropertyChangeSupport pcs;
 	
-	public AmpelModel(){
-		phase = Ampelphase.RED;
+	public AmpelModel(int x, int y, String phase){
+		this.x = x;
+		this.y = y;
+		this.phase = Ampelphase.RED;
 		initial_phase = phase;
 		pcs = new PropertyChangeSupport(this);
 	}
@@ -30,6 +34,26 @@ public class AmpelModel{
 	
 	public String getPhase(){
 		return phase;
+	}
+	
+	public void setPhase (String phase){
+		this.phase = phase;
+	}
+	
+	public int getX(){
+		return x;
+	}
+	
+	public void setX (int x){
+		this.x = x;
+	}
+	
+	public int getY(){
+		return y;
+	}
+	
+	public void setY(int y){
+		this.y = y;
 	}
 	
 	public String toString(){
