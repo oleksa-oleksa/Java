@@ -1,42 +1,35 @@
-package in3.a11;
+package in3.a12.gui.view;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-import in3.a10.Ampelphase;
-import lernhilfe2013ws.graphics.DirtyPainter;
-import lernhilfe2013ws.graphics.Drawable;
+import javax.swing.JPanel;
 
-public class AmpelView implements Drawable, PropertyChangeListener {
-	public static final int CIRCLE_RADIUS = 50;
+import in3.a10.Ampelphase;
+import in3.a12.gui.model.AmpelModel;
+
+public class AmpelView extends JPanel implements PropertyChangeListener  {
+	
+	private static final long serialVersionUID = 1;
 
 	protected int x;
 	protected int y;
 	protected String phase;
-	private DirtyPainter dp;
-
 	
-	public AmpelView(AmpelModel m, DirtyPainter dp){
+	public AmpelView(AmpelModel m){
 		this.x = m.getX();
 		this.y = m.getY();
 		this.phase = m.getPhase();
-		this.dp = dp;
-		
 	}
 	
-	public AmpelView(AmpelView other, DirtyPainter dp){
+	public AmpelView(AmpelView other){
 		this.x = other.x;
 		this.y = other.y;
 		this.phase = other.phase;
-		this.dp = dp;
 	}
 	
-	public void addPainter(DirtyPainter painter){
-		this.dp = painter;
-		painter.add(this);
-	}
 	
 	public String toString(){
 		String s = "State is " + phase + ", position is (" + x + ", " + y + ").";
@@ -44,7 +37,7 @@ public class AmpelView implements Drawable, PropertyChangeListener {
 	}
 	
 	@Override
-	public void draw(Graphics g){
+	public void paintComponent(Graphics g){
 		g.setColor(Color.BLACK);
 		g.fillRect(x-4, y-4, 58, 158);
 		drawLighterCircle(x, y, phase, g);
@@ -96,9 +89,11 @@ public class AmpelView implements Drawable, PropertyChangeListener {
 	public void propertyChange(PropertyChangeEvent e) {
 		if (e.getPropertyName() == AmpelModel.PROPERTY_CHANGE_EVENT_NAME) {
 			phase = (String) e.getNewValue();
-			dp.repaint();
+			repaint();
 		}
 	}
+
+	
 	
 
 }

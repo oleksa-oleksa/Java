@@ -1,10 +1,16 @@
-package in3.a11;
+package in3.a12;
 
+import java.awt.BorderLayout;
+import java.awt.Container;
 import java.io.PrintWriter;
 import java.util.Locale;
 
+import javax.swing.JFrame;
+
+import in3.a12.gui.ctrl.AmpelSteuerung;
+import in3.a12.gui.model.AmpelModel;
+import in3.a12.gui.view.AmpelView;
 import lernhilfe2013ss.event.Timer;
-import lernhilfe2013ws.graphics.DirtyPainter;
 
 public class EventsTest {
 
@@ -12,12 +18,16 @@ public class EventsTest {
 		final int NUMBER_OF_LIGHTS = 4;
 		Locale.setDefault(Locale.US);
 		
-		DirtyPainter painter = new DirtyPainter();
+		JFrame frame = new JFrame("Traffic light");
+		Container c = frame.getContentPane(); // top-level container
+		
+		//Layout and container hierarchy
+		c.setLayout (new BorderLayout ());
+		
 		PrintWriter pw = new PrintWriter(System.out, true);
 		ActionPrinter ap = new ActionPrinter(pw);
 		
 		AmpelModel ampeln[] = new AmpelModel[NUMBER_OF_LIGHTS];
-		AmpelView ampel;
 		
 		//creating Model
 		ampeln[0] = new AmpelModel(150, 150, Ampelphase.RED);
@@ -27,14 +37,18 @@ public class EventsTest {
 
 		//creating View
 		for (int i = 0; i < ampeln.length; i++){
-			ampel = new AmpelView(ampeln[i], painter);
+			AmpelView ampel = new AmpelView(ampeln[i]);
 			ampeln[i].addPropertyChangeListener(ampel);
-			ampel.addPainter(painter);
+			c.add(ampel);
 		}
+		
+		//show frame
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(750, 450);
+		frame.setVisible(true);
+		
 		AmpelSteuerung AmpelControl = new AmpelSteuerung(ampeln);
-		
-		painter.showDrawing();
-		
+				
 		Timer switcher = new Timer(2000, 1000);
 		switcher.addActionListener(AmpelControl);
 		switcher.addActionListener(ap);

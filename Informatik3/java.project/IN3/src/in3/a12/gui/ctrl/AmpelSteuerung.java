@@ -1,7 +1,10 @@
-package in3.a11;
+package in3.a12.gui.ctrl;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import in3.a12.Command;
+import in3.a12.gui.model.AmpelModel;
 
 public class AmpelSteuerung implements ActionListener {
 	

@@ -1,7 +1,9 @@
-package in3.a11;
+package in3.a12.gui.model;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+
+import in3.a12.Ampelphase;
 
 public class AmpelModel{
 	public static final String PROPERTY_CHANGE_EVENT_NAME = "AMPEL_MODEL_UPDATED";
