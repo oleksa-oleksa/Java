@@ -1,3 +1,5 @@
+package easyProblemAlgorithm;
+
 /*You are given a string representing an attendance record for a student. 
  * The record only contains the following three characters:
  * 'A' : Absent.
@@ -8,8 +10,6 @@
  * or more than two continuous 'L' (late).
  * You need to return whether the student could be rewarded according to his attendance record.
 */
-
-package easyProblemAlgorithm;
 
 import java.io.PrintWriter;
 
@@ -70,7 +70,5 @@ public class StudentAttendance {
 		else {
 			out.println("FALSE");
 		}
-	
 	}
-	
 }

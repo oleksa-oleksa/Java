@@ -1,8 +1,7 @@
+package easyProblemAlgorithm;
 //Write a Java program to display the speed, in meters per second, kilometers per hour and miles per hour.
 //User Input : Distance (in meters) and the time was taken (as three numbers: hours, minutes, seconds).
 //Note : 1 mile = 1609 meters
-
-package easyProblemAlgorithm;
 
 import java.io.PrintWriter;
 import java.util.Scanner;
