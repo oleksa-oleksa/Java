@@ -1,4 +1,7 @@
-.DS_STORE
-DS_STORE
-eclipse.workspace/.metadata
-eclipse.workspace/.recommenders
+.DS_Store
+java_projects/.DS_Store
+java_projects/.metadata
+java_projects/.recommenders
+java_projects/.classpath
+java_projects/.project
+Informatik3/..DS_Store
