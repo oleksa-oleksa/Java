@@ -22,7 +22,6 @@ public class FirstInput {
 		con.printf("Sum of numbers from string: %d%n", countSumOf(in));
 		con.printf("Sum of numbers from a file: %d%n", countSumOf("./testfiles/mixedNo.txt"));
 		
-		in = new Scanner(numberString);
 		paintPointsFrom(in);
 		paintPointsFrom("./testfiles/mixedNo.txt");
 	}

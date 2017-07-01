@@ -1,4 +1,4 @@
-// the next should be printed only with two prints-commands, each of them has only '\n'
+// the next should be printed only with two prints-commands, each of them has only one '\n'
 
 //123456789012345
 //       11111
