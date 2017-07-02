@@ -21,13 +21,13 @@ public class Student extends Person {
 		public String degreeCourse;
 		
 		//inheritance 
-		public Student (String name, String familyName, int yearOfBirth, String degreeCourse, int enrolmentNo){
+		public Student(String name, String familyName, int yearOfBirth, String degreeCourse, int enrolmentNo){
 			super(name, familyName, yearOfBirth);
 			this.enrolmentNo = enrolmentNo;
 			this.degreeCourse = degreeCourse;
 		}
 		
-		public String toString (){
+		public String toString(){
 			return super.toString() + " " + degreeCourse + " s" + Integer.toString(enrolmentNo);
 		}
 		

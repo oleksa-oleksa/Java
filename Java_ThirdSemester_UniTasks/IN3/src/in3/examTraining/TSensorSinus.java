@@ -2,7 +2,7 @@ package in3.examTraining;
 
 public class TSensorSinus extends TSensorPeriodic {
 	// A * sin (wt)
-	public TSensorSinus (long timePeriod, double tMin, double tMax){
+	public TSensorSinus(long timePeriod, double tMin, double tMax){
 		super (timePeriod, tMin, tMax);
 	}
 	public double getT(long time){
