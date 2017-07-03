@@ -12,6 +12,6 @@ public class LightsGridLayout extends JPanel{
 	public LightsGridLayout(AmpelSteuerung s){
 		setLayout(new GridLayout(2, 1));
 		add(new LightsGridLayoutAmpeln(s.getAmpeln()));
-		add(new LightsGridLayoutButtons());
+		add(new LightsGridLayoutButtons(s));
 	}
 }

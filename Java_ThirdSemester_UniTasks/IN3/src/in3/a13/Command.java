@@ -7,4 +7,6 @@ public class Command {
 	public static final String STOP_ALL = "STOP_ALL";
 	public static final String RESET_ALL = "RESET_ALL";
 	public static final String ERROR = "ERROR_BY_CONTROL_FLOW";
+	public static final String TOGGLE_TIMERS = "TOGGLE_TIMERS";
+	
 }
