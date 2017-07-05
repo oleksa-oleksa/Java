@@ -40,7 +40,7 @@ public class ManualControlTest {
 		label.setForeground(Color.BLUE);
 		
 		container.add(label, BorderLayout.NORTH);
-		container.add(new LightsGridLayout(ampelControl), BorderLayout.CENTER);
+		container.add(new ButtonsAmpelnPanel(ampelControl), BorderLayout.CENTER);
 		container.add(new JLabel("ver. a13"), BorderLayout.SOUTH);
 				
 		//show
